@@ -1,0 +1,16 @@
+import mongoose from 'mongoose'
+
+
+const dbConnect=async ()=>{
+    try {
+        
+      const connectionInstance=  await mongoose.connect(`${process.env.MONGO_URI}`);
+      console.log("mongodb connected");
+    } catch (error) {
+        console.log("error occured while connecting db",error);
+        process.exit(1);
+        
+    }
+  
+}
+  export default dbConnect
