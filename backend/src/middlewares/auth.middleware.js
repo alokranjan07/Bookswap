@@ -1,9 +1,9 @@
 import {User} from '../models/user.models.js'
 
-const Authmiddlewares=AsyncHandeler(async(req,res)=>{
+const AuthMiddleware=AsyncHandeler(async(req,res)=>{
     const token=req.cookies.accesstoken
     if(!token){
-        throw new ApiError(404,"tokne not found")
+        throw new ApiError(404,"tokens  not found")
     }
     const decodedtoken=await jwt.verfiy(token,process.env.tokenAccess_token)
     if(!decodedtoken){
@@ -15,3 +15,4 @@ const Authmiddlewares=AsyncHandeler(async(req,res)=>{
     next();
 
 })
+export {AuthMiddleware}

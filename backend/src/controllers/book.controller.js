@@ -1,10 +1,10 @@
 import { Book } from "../models/book.models.js";
 import { ApiError } from "../utils/ApiError.js";
-import { apiResponse } from  '../utils/Apiresponse.js'
-import { asyncHandler } from  '../utils/Asynchandler.js'
+import { ApiResponse } from  '../utils/Apiresponse.js'
+import { AsyncHandler } from  '../utils/Asynchandler.js'
 
  
-export const addBook = asyncHandler(async (req, res) => {
+  const addBook = AsyncHandler(async (req, res) => {
   const { title, author, isAvailableForSwap, expectedBook } = req.body;
 
   if (!title || !expectedBook) {
@@ -29,7 +29,7 @@ export const addBook = asyncHandler(async (req, res) => {
     .json(new ApiResponse(201, book, "Book added successfully"));
 });
  
-export const getBook = asyncHandler(async (req, res) => {
+  const getBook = AsyncHandler(async (req, res) => {
   const { id } = req.params;
 
   const book = await Book.findById(id);
@@ -43,7 +43,7 @@ export const getBook = asyncHandler(async (req, res) => {
 });
 
  
-export const updateBookById = asyncHandler(async (req, res) => {
+  const updateBookById = AsyncHandler(async (req, res) => {
   const { id } = req.params;
   const { title, author, isAvailableForSwap, expectedBook } = req.body;
 
@@ -63,7 +63,7 @@ export const updateBookById = asyncHandler(async (req, res) => {
 });
 
  
-export const deleteBook = asyncHandler(async (req, res) => {
+ const deleteBook = AsyncHandler(async (req, res) => {
   const { id } = req.params;
 
   const deletedBook = await Book.findByIdAndDelete(id);
@@ -75,3 +75,12 @@ export const deleteBook = asyncHandler(async (req, res) => {
     .status(200)
     .json(new ApiResponse(200, null, "Book deleted successfully"));
 });
+
+export{
+  addBook ,
+  deleteBook,
+  getBook ,
+  updateBookById ,
+ 
+
+}

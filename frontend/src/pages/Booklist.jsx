@@ -7,7 +7,7 @@ function Booklist() {
   useEffect(()=>{
    const fetchApi=async()=>{
     try {
-      const res=await axios.fetch();
+      const res=await axios.get("");
       const data=res.data.data;
       setState(data);
 
@@ -27,7 +27,9 @@ function Booklist() {
       <div className="heading">Booklist</div>
       <div className="card">
         {state.map((item)=>(
-          div
+          <div key={item._id}>
+            <h1 style={{"color":"green"}}>this is book</h1>
+            </div>
 
         ))}
 
